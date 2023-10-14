@@ -21,8 +21,9 @@ import Foreign.C.ConstPtr
 -- /See:/ [base64-encoding-decoding](https://libsodium.gitbook.io/doc/helpers#base64-encoding-decoding)
 foreign import capi "sodium.h sodium_bin2base64"
   sodiumBin2Base64
-    :: ConstPtr CChar
+    :: Ptr CChar
     -- ^ Resulting conversion to base64 is stored here including C null terminator
+    -- ^ NOTE: This is `char *const`
     -> CSize
     -- ^ Maximum number of bytes allowed to be stored in base64 number when converting
     -- ^ WARNING: Must be 2 * binLen + 1 in size
